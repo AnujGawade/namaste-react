@@ -2,16 +2,16 @@
 
 ## What is a CDN?
 
-**CDN (Content Delivery Network)** is a network of distributed servers placed across different geographic locations that deliver website content faster to users.
+CDN (Content Delivery Network) is a network of distributed servers placed across different geographic locations that deliver website content faster to users.
 
-Meaning, Instead of loading resources from one central server, the CDN delivers files from the **nearest server to the user**.
+Meaning, Instead of loading resources from one central server, the CDN delivers files from the nearest server to the user.
 
 ### Example
 
-If a website server is in the **USA** and a user opens it from **India**:
+If a website server is in the USA and a user opens it from India:
 
-- Without CDN → Request travels **India → USA → India**
-- With CDN → Request goes to **nearest CDN server (India or Asia)**
+- Without CDN → Request travels India → USA → India
+- With CDN → Request goes to nearest CDN server (India or Asia)
 
 This reduces latency and improves loading speed.
 
@@ -19,7 +19,7 @@ This reduces latency and improves loading speed.
 
 # CDN in React (Namaste React Episode 1)
 
-In the first episode of Namaste React, I added React using **CDN links**.
+In the first episode of Namaste React, I added React using CDN links.
 
 Example:
 
@@ -74,7 +74,7 @@ It helped me understand:
 
 # Why CDN is NOT Used in Production React Apps
 
-In real-world applications, React is installed using **npm**.
+In real-world applications, React is installed using npm.
 
 Example:
 
@@ -135,7 +135,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 ```
 
-CDN exposes React as **global variables**, not modules.
+CDN exposes React as global variables, not modules.
 
 ---
 
