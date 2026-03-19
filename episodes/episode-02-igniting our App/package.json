@@ -1,0 +1,23 @@
+{
+  "name": "episode-02-igniting-our-app",
+  "version": "1.0.0",
+  "description": "Episode 2 of Namaste React",
+  "homepage": "https://github.com/AnujGawade/namaste-react#readme",
+  "bugs": {
+    "url": "https://github.com/AnujGawade/namaste-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnujGawade/namaste-react.git"
+  },
+  "license": "ISC",
+  "author": "Anuj",
+  "type": "commonjs",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  }
+}
