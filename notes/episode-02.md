@@ -155,3 +155,69 @@ When you install a package, you may see:
 - `~` is stricter (only patch)
 
 ---
+
+## 📦 package-lock.json
+
+- `package.json` stores **approximate versions**
+- `package-lock.json` stores **exact versions**
+
+### Why is it important?
+
+- Locks dependency versions
+- Ensures consistency across environments
+- Prevents "works on my machine" issues and doesn't on Production.
+
+---
+
+### 🔐 Integrity (Hash)
+
+- `package-lock.json` includes a **hash (sha512)**
+- Verifies that installed packages are:
+  - Authentic
+  - Unchanged
+
+## Have You heard "It is working on my local, I don't know how it break on production". So to avoid that package-lock.json keeps a hash to verify that whatever is there in my machine, meaning whatever is there right now in my dev machine is the same version which is deployed onto the production.
+
+## 📁 node_modules
+
+- Created when you run:
+
+```bash
+npm install
+```
+
+### What does it contain?
+
+- Actual source code of dependencies
+- All installed packages
+
+👉 Think of it as a **database of packages**
+
+---
+
+## 🔗 Transitive Dependencies
+
+- Dependencies of dependencies
+
+👉 Example:
+
+- You install Parcel
+- Parcel installs many other packages internally
+
+---
+
+## 📁 Multiple package.json Files
+
+- Your project has **one main package.json**
+- But inside `node_modules`, each package has its own `package.json`
+
+---
+
+## 🧾 Summary
+
+- `package.json` → configuration + approx versions
+- `package-lock.json` → exact versions + integrity
+- `node_modules` → actual code of dependencies
+- Bundler → prepares app for production
+- Parcel → zero-config bundler
+- Dependencies → direct + transitive
