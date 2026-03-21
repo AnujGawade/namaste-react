@@ -221,3 +221,132 @@ npm install
 - Bundler → prepares app for production
 - Parcel → zero-config bundler
 - Dependencies → direct + transitive
+
+# 🚀 Part 2 - Igniting our App using Parcel
+
+## 📌 Running Parcel
+
+When we run:
+
+```bash
+npx parcel ./index.html
+```
+
+👉 It hosts the app on:
+http://localhost:1234
+
+---
+
+## 📦 What is `npx parcel ./index.html`?
+
+- `npm` → used to **install packages**
+- `npx` → used to **execute packages**
+
+### ✅ Key Difference
+
+| Command | Purpose          |
+| ------- | ---------------- |
+| npm     | Install packages |
+| npx     | Execute packages |
+
+👉 So, when we run:
+
+```bash
+npx parcel ./index.html
+```
+
+- Parcel takes `index.html` as the **entry point**
+- Builds a **development build**
+- Starts a **local server**
+- Hosts app on `localhost:1234`
+
+---
+
+## ⚠️ Why NOT use React via CDN?
+
+Using CDN links is **not recommended** because:
+
+1. ❌ **Network Dependency**
+   - Every time browser fetches React from internet
+
+2. ❌ **Slower Performance**
+   - External request increases load time
+
+3. ❌ **Not Scalable**
+   - Not suitable for production apps
+
+4. ✅ Better Approach:
+   - Install React via `npm`
+   - Use from `node_modules`
+
+---
+
+# 📦 Parcel Bundler
+
+Parcel is a **zero-config bundler** that simplifies development.
+
+---
+
+## 🔥 Features of Parcel
+
+### 1. 🚀 Dev Build
+
+- Creates a development build of your app
+
+---
+
+### 2. 🌐 Local Server
+
+- Runs app on:
+  http://localhost:1234
+
+---
+
+### 3. 🔄 HMR (Hot Module Replacement)
+
+👉 Automatically updates browser when you save changes
+
+**Without reload → Faster development**
+
+---
+
+### 4. 👀 File Watching Algorithm
+
+- Tracks file changes
+- Written in **C++**
+- Makes detection super fast
+
+---
+
+### 5. ⚡ Caching (Faster Builds)
+
+- First build → slower
+- Next builds → faster
+
+👉 Why?
+
+- Parcel stores cache in:
+  .parcel-cache
+
+- Reuses previous build data
+
+---
+
+### 6. 🖼️ Image Optimization
+
+- Automatically optimizes images
+
+---
+
+### 7. 📉 Minification
+
+- Removes unnecessary code
+- Reduces file size
+
+---
+
+### 8. 🗜️ Compression
+
+- Compresses files for better performance
+
+---
