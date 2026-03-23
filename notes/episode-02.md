@@ -350,3 +350,44 @@ Parcel is a **zero-config bundler** that simplifies development.
 - Compresses files for better performance
 
 ---
+
+### 9. 🗜️ Consistent Hashing
+
+---
+
+### 10. 🗜️ Code Spitting
+
+---
+
+### 11. 🗜️ Differential Bundling
+
+- It helps your app to run smoothly on older Browsers.
+
+---
+
+### 12. 🗜️ Diagnostic
+
+- It helps your app to run smoothly on older Browsers.
+
+---
+
+### 13. 🗜️ Error Handling
+
+- It helps your app to run smoothly on older Browsers.
+
+---
+
+### 14. 🗜️ Tree Shaking
+
+- Remove unused Code.
+  Example: Suppose we have 100 functions in our code but we are using only 5-10 of those it removes those meaning it will minify, compress, etc. it.
+
+---
+
+## 🌐 Browserslist
+
+- Defines supported browsers
+- Ensures compatibility across versions
+
+👉 Configure using:
+https://browserslist.dev
