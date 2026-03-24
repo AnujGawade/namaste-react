@@ -34,7 +34,7 @@ and fill in the details, a **package.json** file is created.
 - These packages are also called **dependencies**
 - `package.json` keeps track of:
   - Package names
-  - Versions
+  - Versions (approx)
   - Project configuration
 
 ---
@@ -114,7 +114,7 @@ npm install parcel -D
 
 ## 🔢 Versioning Symbols
 
-When you install a package, you may see:
+When you install a package, in your package.json you may see:
 
 ```json
 "parcel": "^2.0.0"
@@ -171,7 +171,7 @@ When you install a package, you may see:
 
 ### 🔐 Integrity (Hash)
 
-- `package-lock.json` includes a **hash (sha512)**
+- `package-lock.json` includes a integrity which has **hash (sha512)**
 - Verifies that installed packages are:
   - Authentic
   - Unchanged
