@@ -1,19 +1,35 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
-// React.createElement
-// Now I am using React 19. For it refer the deep-dive to understand more about why reactDom.render is not used
-
-const heading = React.createElement(
-  'h1',
-  { id: 'heading' },
-  'My Name is Anuj and reverse of my name is Juna',
+const Title = () => (
+  <h1 className="heading">
+    Hello My name is Anuj and irony is that reverse of it is JUNA
+  </h1>
 );
-console.log(heading);
 
-const jsxHeading = <h1 id="heading">Namaste React</h1>;
-console.log(jsxHeading);
+const elem = <span>React Element</span>;
+
+// const title = (
+//   <h1 className="heading">
+//     {elem}
+//     Hello My name is Anuj and irony is that reverse of it is JUNA
+//   </h1>
+// );
+
+// Component Composition
+const HeadingComponent = () => {
+  return (
+    <div id="container">
+      {/* <Title /> */}
+      {/* Since Title is a component and it a function then we can also call it like below  */}
+      {Title()}
+      {/* {title} */}
+      <h1>Functional Component</h1>;
+    </div>
+  );
+};
 
 const root = createRoot(document.getElementById('root'));
 
-root.render(heading);
+// When Babel see's angular brackets </> and sees a HeadingComponent in it so it understands that there must be some heading component existing there.
+root.render(<HeadingComponent />);
