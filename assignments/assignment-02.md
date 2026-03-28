@@ -129,14 +129,14 @@
 
 ### What is `.gitignore`?
 
-`.gitignore` is a file used in **Git** to specify which files and folders should be **ignored (not tracked)** by version control.
+`.gitignore` is a file used in **Git** to specify which files and folders should be **ignored (not tracked)**.
 
 - It prevents unnecessary or sensitive files from being pushed to the repository.
 - Helps keep the repository **clean and secure**.
 
 ---
 
-### ✅ What should we add to `.gitignore`?
+### What should we add to `.gitignore`?
 
 1. **node_modules/**
    - Contains installed packages (can be reinstalled using `npm install`)
@@ -155,7 +155,7 @@
 
 ---
 
-### ❌ What should NOT be added to `.gitignore`?
+### What should NOT be added to `.gitignore`?
 
 1. **Source code**
    - `src/`, `components/`, etc.
@@ -170,3 +170,116 @@
    - Important for understanding the project
 
 ---
+
+## 10. What is the difference between `package.json` and `package-lock.json`?
+
+### Package.json
+
+Package.json file is a configuration for NPM.
+
+- The Packages that our project needs, we install using NPM.
+- Once Packages are installed, there version/configuration information is stores inside package.json.
+- It contains the approximate version of packages used in our project.
+
+---
+
+### Package-lock.json
+
+Package-lock.json locks the exact version of the packages used in our project.
+
+---
+
+### Difference between `package.json` and `package-lock.json`
+
+package.json stores the approximate version of packages used in our project and Package-lock.json stores the exact version of the packages used in our project.
+
+---
+
+## 11. Why should I not modify `package-lock.json`?
+
+`package-lock.json` is an automatically generated file by NPM that **locks the exact versions of dependencies** used in the project.
+
+---
+
+### 📌 Why should you NOT modify it manually?
+
+1. **Ensures consistency**
+   - It guarantees that every developer installs the **same exact versions** of dependencies.
+   - Avoids “it works on my machine” issues.
+
+2. **Maintains dependency tree**
+   - It stores the complete dependency structure (including sub-dependencies).
+   - Manual changes can break this structure.
+
+3. **Prevents unexpected bugs**
+   - Even small changes can cause **version mismatches** and bugs.
+
+---
+
+### Let all this things aside have You heard "It is working on my local, I don't know how it broke on production". So to avoid that package-lock.json keeps a hash to verify that whatever is there in my machine, meaning whatever is there right now in my dev machine is the same version which is deployed onto the production.
+
+---
+
+## 12. What is `node_modules` ? Is it a good idea to push that on git?
+
+`node_modules` are like a database of Packages which gets installed whenever we run:
+
+```bash
+npm install
+```
+
+---
+
+### Is it a good idea to push that on git?
+
+**No, it is NOT a good idea to push `node_modules` to Git.**
+
+---
+
+### Reasons:
+
+1. **Very large in size**
+   - `node_modules` can contain thousands of files.
+   - It makes the repository **heavy and slow**.
+
+2. **Can be regenerated**
+   - All dependencies are already defined in `package.json` and `package-lock.json`.
+   - You can recreate it anytime using:
+     ```bash
+     npm i
+     ```
+
+---
+
+## 13. What is the `dist` folder?
+
+When bundler builds the app, the build gets stored in the folder knowns as dist.
+
+- The dist folder contains the minified and optimized version of the source code.
+- This build can be created using the following command:
+
+```bash
+npx parcel index.html
+```
+
+- To make a production build:
+
+```bash
+npx parcel build index.html
+```
+
+---
+
+## 14. What is `browserlists`
+
+Browserslist is a tool that specifies which browsers should
+be supported/compatible in your frontend app.
+
+- It makes our code compatible for a lot of browsers.
+- In package.json file do:
+
+```javascript
+browserslist: ['last 2 versions'];
+```
+
+This will guarantee to make our project work on last versions of all the browsers.
