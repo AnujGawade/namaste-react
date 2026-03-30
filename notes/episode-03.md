@@ -172,6 +172,11 @@ React.createElement('h1', { id: 'heading' }, 'My Name is Anuj');
 
 ---
 
+## Styling
+
+👉 In HTML we use `class=""` for adding a CSS class.
+👉 In JSX we use `className=""` for adding a CSS class.
+
 ## 🔄 Transpilation
 
 - JSX → converted into → `React.createElement()`
