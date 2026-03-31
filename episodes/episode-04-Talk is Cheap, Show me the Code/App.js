@@ -22,20 +22,32 @@ const Header = () => {
   );
 };
 
+const RestaurantCard = () => {
+  return (
+    <div className="restaurant-container">
+      <div className="restaurant-card">
+        <img
+          className="restaurant-logo"
+          src="https://www.cubesnjuliennes.com/wp-content/uploads/2020/07/Chicken-Biryani-Recipe.jpg"
+        />
+        <div className="restaurant-details">
+          <h3>Hong Kong</h3>
+          <h4>Chinese, Biryani, Asian</h4>
+          <h4>4.4 Stars</h4>
+          <h4>38 Minutes</h4>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Body = () => {
   return (
     <div className="body">
-      <div className="search">
-        <h1>Search</h1>
-      </div>
+      <div className="search">Search</div>
       <div className="restaurant-container">
-        <div className="restaurant-card">
-          <img src="https://www.cubesnjuliennes.com/wp-content/uploads/2020/07/Chicken-Biryani-Recipe.jpg" />
-          <div className="restaurant-details">
-            <h1>Chicken Biryani</h1>
-            <h2>Rating</h2>
-          </div>
-        </div>
+        <RestaurantCard />
+        <RestaurantCard />
       </div>
     </div>
   );
