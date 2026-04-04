@@ -97,6 +97,12 @@
   margin-bottom: 20px;
 }
 
+.search input {
+  width: 300px;
+  padding: 8px;
+  border-radius: 10px;
+}
+
 /* Grid stays same (important) */
 .restaurant-container {
   display: grid;
@@ -170,35 +176,6 @@
 .meta {
   font-size: 13px;
   color: #535665;
-}
-
-.filter {
-  padding: 5px;
-}
-
-.filter-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ff4d4f; /* nice red */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 2px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-/* Hover effect */
-.filter-btn:hover {
-  background-color: #e63946;
-  transform: scale(1.05);
-}
-
-/* Active click effect */
-.filter-btn:active {
-  transform: scale(0.95);
 }
 
 /* Responsive */
