@@ -1,7 +1,4 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-
-export const RestaurantData = [
+const RestaurantData = [
   {
     id: '123456',
     name: 'Pizza Paradise',
@@ -77,76 +74,4 @@ export const RestaurantData = [
   },
 ];
 
-const Header = () => {
-  return (
-    <div className="header">
-      <div className="logo-container">
-        <img
-          className="logo"
-          src="https://cdn.dribbble.com/userupload/16778067/file/original-d75cb39663149843b1572e4cc64681fe.jpg?resize=400x0"
-        />
-      </div>
-      <div className="nav">
-        <ul className="nav-items">
-          <li>Home</li>
-          <li>Contact Us</li>
-          <li>About Us</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-
-const RestaurantCard = ({ data }) => {
-  const { name, image, cuisines, rating, costForTwo } = data;
-
-  return (
-    <div className="restaurant-card">
-      <img
-        className="restaurant-logo"
-        src="https://www.thespruceeats.com/thmb/sdVTq0h7xZvJjPr6bE2fhh5M3NI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/SES-best-fish-and-chips-recipe-434856-hero-01-27d8b57008414972822b866609d0af9b.jpg"
-        alt={name}
-      />
-
-      <div className="restaurant-details">
-        <div className="top-row">
-          <h3 className="name">{name}</h3>
-          <span className="rating">{rating} ⭐</span>
-        </div>
-
-        <p className="cuisines">{cuisines.join(', ')}</p>
-
-        <div className="meta">
-          <span>{costForTwo}</span>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const Body = () => {
-  return (
-    <div className="body">
-      <div className="search">Search</div>
-      <div className="restaurant-container">
-        {RestaurantData.map((item) => (
-          <RestaurantCard key={item.id} data={item} />
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const AppLayout = () => {
-  return (
-    <h1 className="app">
-      <Header />
-      <Body />
-    </h1>
-  );
-};
-
-const root = createRoot(document.getElementById('root'));
-
-root.render(<AppLayout />);
+export default RestaurantData;

@@ -1,0 +1,61 @@
+/* Main header container */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Logo container */
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Logo image */
+.logo {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Search container */
+.search-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* Input box */
+.search-container input {
+  width: 60%;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+
+/* Input focus effect */
+.search-container input:focus {
+  border-color: #ff4d4f;
+  box-shadow: 0 0 5px rgba(255, 77, 79, 0.3);
+}
+
+/* Icon container */
+.icon {
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+  transition: 0.3s ease;
+}
+
+/* Hover effect */
+.icon:hover {
+  color: #ff4d4f;
+}
