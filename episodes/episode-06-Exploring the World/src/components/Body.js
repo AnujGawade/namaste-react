@@ -1,9 +1,25 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import RestaurantData from '../utils/mockData';
 import RestaurantCard from './RestaurantCard';
 
 const Body = () => {
-  const [listOfRestaurants, setListOfRestaurants] = useState(RestaurantData);
+  const [listOfRestaurants, setListOfRestaurants] = useState([]);
+
+  const fetchData = async () => {
+    const data = await fetch(
+      'https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.07480&lng=72.88560&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING',
+    );
+
+    const json = await data.json();
+
+    setListOfRestaurants(
+      json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants,
+    );
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <div className="body">
@@ -12,7 +28,7 @@ const Body = () => {
           className="filter-btn"
           onClick={() => {
             const filterRestaurants = listOfRestaurants.filter(
-              (item) => item.rating > 4,
+              (item) => item.info.avgRating > 4,
             );
             setListOfRestaurants(filterRestaurants);
           }}
@@ -22,7 +38,7 @@ const Body = () => {
       </div>
       <div className="restaurant-container">
         {listOfRestaurants?.map((item) => (
-          <RestaurantCard key={item.id} data={item} />
+          <RestaurantCard key={item.info.id} data={item.info} />
         ))}
       </div>
     </div>

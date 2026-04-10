@@ -181,3 +181,11 @@ useEffect Rendered
 6. Now React runs useEffect callback
 
 ---
+
+### **When I made an API call to NamasteDev.com api, I was getting an error of `Access to fetch at "https://namastedev.com/api/v1/listRestaurants" from origin "http:localhost:1234" has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested Resource.`**
+
+❌ Who is blocking us?
+Our browsers block us to call API from one origin to a different origin.
+
+- Our Browser, means chrome is blocking me from making an API call to Namastedev.com.
+- So If there is origin mismatch, the browser blocks the API call. This is the `CORS Policy`.
