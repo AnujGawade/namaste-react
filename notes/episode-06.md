@@ -189,3 +189,166 @@ Our browsers block us to call API from one origin to a different origin.
 
 - Our Browser, means chrome is blocking me from making an API call to Namastedev.com.
 - So If there is origin mismatch, the browser blocks the API call. This is the `CORS Policy`.
+
+# Part 4 - Shimmer UI
+
+In this Part I learned about Shimmer UI and Conditional Rendering.
+
+```javascript
+{
+  listOfRestaurants.length === 0 ? (
+    <Shimmer />
+  ) : (
+    // Rest of the code logic
+  )
+}
+```
+
+# Part 5
+
+## ⚛️ Why do we need/use State Variables (`useState()`)?
+
+### 🧠 Problem Understanding (with Example)
+
+👉 Scenario: We have a **Login button** which should change to **Logout** on click.
+
+---
+
+### ❌ Using Normal JavaScript Variable
+
+```javascript
+let btnText = 'Login';
+```
+
+```jsx
+<button>{btnText}</button>
+```
+
+---
+
+### ❌ Trying to Update on Click
+
+```jsx
+<button
+  onClick={() => {
+    btnText = 'Logout';
+    console.log(btnText);
+  }}
+>
+  {btnText}
+</button>
+```
+
+## ⚠️ What happens?
+
+- Console shows "Logout" ✅
+- But UI does NOT update ❌
+
+## ❓ Why UI is not updating?
+
+Because:
+
+- React does not track normal JavaScript variables
+- Changing a variable does NOT trigger re-render
+
+👉 React only re-renders when state or props change
+
+## ✅ Solution: State Variable using useState
+
+```javascript
+import { useState } from 'react';
+
+const [btnText, setBtnText] = useState('Login');
+```
+
+### ✅ Updated Code
+
+```javascript
+<button
+  onClick={() => {
+    setBtnText('Logout');
+  }}
+>
+  {btnText}
+</button>
+```
+
+## 🚀 What happens now?
+
+- setBtnText("Logout") is called
+- React updates the state
+- Component re-renders
+- UI updates automatically ✅
+
+## 🧠 Key Concept
+
+👉 State Variables = Superpowerful variables
+
+- React tracks them
+- Updating them triggers re-render
+- Keeps UI in sync with data
+
+**Meaning whenever the state variable will be changed using the setter function, react will re-render the entire component, it will kind of refresh this entire component and all the updated values will be refreshed.**
+
+### State Variable Changes = Entire Component Re-Renderes
+
+## ⚛️ How can we update a constant variable in `useState`?
+
+```javascript
+const [btnName, setBtnName] = useState('Login');
+```
+
+### 🤔 Question
+
+---
+
+### 👉 How can we update a variable declared with const?
+
+Whenever we update the setBtnName like below, react is updating the btnName and it is basically calling this header function once again meaning rendering this component, but this time when it invoke's the function, this btnName is a new variable.
+
+### 🧠 Key Understanding
+
+- btnName is declared using const
+- Normally, const variables cannot be reassigned ❌
+
+```javascript
+btnName = 'Logout'; // ❌ Error
+```
+
+---
+
+### ✅ Then how does it work in React?
+
+👉 Because we are NOT directly modifying the variable
+
+Instead:
+
+- We use the setter function → setBtnName()
+
+---
+
+⚙️ How it actually works
+
+```javascript
+setBtnName('Logout');
+```
+
+👉 What happens internally:
+
+- React updates the state value
+- Triggers a re-render
+- On next render:
+
+```javascript
+btnName = 'Logout';
+```
+
+---
+
+### 🔄 Flow
+
+```jsx
+Initial Render → btnName = "Login"
+Click Button → setBtnName("Logout")
+Re-render → btnName = "Logout"
+```

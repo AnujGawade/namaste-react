@@ -211,3 +211,71 @@
     height: 160px;
   }
 }
+
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.shimmer-card {
+  width: 250px;
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f0f0f0;
+  position: relative;
+}
+
+.shimmer-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150px;
+  height: 100%;
+  width: 150px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+
+  animation: shimmer 1.5s infinite;
+}
+
+.shimmer-card {
+  width: 250px;
+  border-radius: 12px;
+  background: #f0f0f0;
+  padding: 10px;
+}
+
+.shimmer-img {
+  height: 150px;
+  border-radius: 10px;
+  background: #e0e0e0;
+  margin-bottom: 10px;
+}
+
+.shimmer-line {
+  height: 12px;
+  background: #e0e0e0;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.shimmer-line.short {
+  width: 60%;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -150px;
+  }
+  100% {
+    left: 100%;
+  }
+}
