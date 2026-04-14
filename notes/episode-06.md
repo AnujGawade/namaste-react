@@ -288,9 +288,13 @@ const [btnText, setBtnText] = useState('Login');
 - Updating them triggers re-render
 - Keeps UI in sync with data
 
+## **Whenever state variable update, react triggers a reconciliation cycle(re-renders the component)**
+
 **Meaning whenever the state variable will be changed using the setter function, react will re-render the entire component, it will kind of refresh this entire component and all the updated values will be refreshed.**
 
 ### State Variable Changes = Entire Component Re-Renderes
+
+---
 
 ## ⚛️ How can we update a constant variable in `useState`?
 
@@ -304,7 +308,7 @@ const [btnName, setBtnName] = useState('Login');
 
 ### 👉 How can we update a variable declared with const?
 
-Whenever we update the setBtnName like below, react is updating the btnName and it is basically calling this header function once again meaning rendering this component, but this time when it invoke's the function, this btnName is a new variable.
+**Whenever we update the setBtnName like below, react is updating the btnName and it is basically calling this header function once again meaning rendering this component, but this time when it invoke's the function, this btnName is a new variable.**
 
 ### 🧠 Key Understanding
 
@@ -352,3 +356,96 @@ Initial Render → btnName = "Login"
 Click Button → setBtnName("Logout")
 Re-render → btnName = "Logout"
 ```
+
+# Part 6 - Building Search Functionality
+
+### 🔍 Search Functionality in React (Controlled Component)
+
+---
+
+### 🧠 Problem Statement
+
+We want to:
+
+- Create an input box
+- Type something
+- Filter data on button click
+
+## 📌 Initial Setup
+
+```jsx
+<input type="text" className="search-box" />
+<button>Search</button>
+```
+
+### ⚛️ Step 1: Create State Variable
+
+To track what user types:
+
+```javascript
+const [searchText, setSearchText] = useState('');
+```
+
+### ⚛️ Step 2: Bind Input Value
+
+```javascript
+<input type="text" className="search-box" value={searchText} />
+```
+
+- After doing this I thought that it will work. **But when I try to type anything inside the input nothing appears, it is empty whatever I write.**
+
+---
+
+#### ❌ Problem
+
+👉 You cannot type anything in the input box
+
+### 🤔 Why does this happen?
+
+- Input value is controlled by React state
+- value={searchText} means:
+  👉 Input always shows value of searchText
+- But searchText is NOT updating ❌
+
+👉 So input stays empty
+
+---
+
+What is happening is that
+
+- we have Bind the value of input box to this `searchText` state variable. And this `searchText` value is bind to the input box.
+- Meaning whatever there is inside the `searchText` variable will be there inside the value of this input box.
+- Now When we change the value of the input box, when we type something, the value of input box is still tied to this `searchText`, this value of this input box is tied to this `searchText`.
+- Meaning our `searchText` is not getting updated, but we are trying to modify the input box.
+- So because this value of input box is bind to this `searchText` and this searchText is empty. So this input box will not change unless we change the value of `searchText`
+
+### 🧠 Key Concept
+
+👉 This is called a **Controlled Component**
+
+- React controls the input value
+- Not the DOM
+
+### ✅ Solution: Add onChange
+
+```jsx
+<input
+  type="text"
+  className="search-box"
+  value={searchText}
+  onChange={(e) => setSearchText(e.target.value)}
+/>
+```
+
+#### 🚀 What happens now?
+
+- User types → onChange fires
+- setSearchText() updates state
+- Component re-renders
+- Input shows updated value ✅
+
+---
+
+- **When I type "Cafe" inside the Input box, the state variable changes. And When State Variable Changes meaning that many times component re-renders.**
+- Meaning Component will be rendered 4 times and if we type 54 words then it will render 54 times.
+- React's reconciliation algorith is so strong that when we type in input box, it only changes the value of the input. **Check by clicking inspect on input and try typing something.**
