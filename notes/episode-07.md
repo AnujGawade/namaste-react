@@ -54,26 +54,177 @@ useEffect(() => {
 - Try to call these state variables on the **top of the functional component**.
 - Never create your state variables **inside** the `if else` or a `Function`.
 
-# Part 3 - React Routing
+# ⚛️ Part 3 – React Routing
 
-- For Routing we mostly use `createBrowserRouter`/`BrowserRouter` and `RouterProvider` in case we use `createBrowserRouter`.
+---
 
-- Suppose we write a route which is not present in our routes configuration.
-- Then react-router-dom gives an error. To avoid this error we can create our own Error component.
-- And Once we create a Error Component we can attach it with the use of `errorElement` and used as below:
+## 🧠 What is Routing in React?
+
+Routing allows us to **navigate between different pages/components** in a React application without reloading the page.
+
+👉 Commonly used library: `react-router-dom`
+
+---
+
+## 📌 Routing Setup
+
+We use:
+
+- `createBrowserRouter`
+- `RouterProvider`
+
+---
+
+## ⚠️ Handling Unknown Routes (Error Page)
+
+👉 Problem:
+If a user enters a route that is not defined → React throws an error
+
+---
+
+## ✅ Solution: Error Component
 
 ```javascript
 {
-    path: '/',
-    element: <AppLayout />,
-    errorElement: <Error />,
+  path: "/",
+  element: <AppLayout />,
+  errorElement: <Error />,
 }
 ```
 
-- Once done this then it will make the Error component appear whenever a route which is not present in the route configuration.
+👉 `errorElement`:
 
-### useRouteError
+Displays custom UI when route is not found
+Prevents default error page
 
-- useRouteError() Hook provided by react-router-dom.
-- **Using useRouteError() gives more information about Error.**
-- **Instead of displaying `Oops!`, something went wrong, we should also display a better message on our page.**
+---
+
+### ⚛️ useRouteError()
+
+- A hook provided by react-router-dom
+- Gives detailed information about the error
+
+### 🔥 Example
+
+```javascript
+import { useRouteError } from 'react-router-dom';
+
+const Error = () => {
+  const err = useRouteError();
+
+  return (
+    <div>
+      <h1>Oops! Something went wrong</h1>
+      <h2>
+        {err.status} - {err.statusText}
+      </h2>
+    </div>
+  );
+};
+```
+
+👉 Helps display meaningful error messages
+
+# ⚛️ Part 4 – Children Routes
+
+### 🧠 Problem
+
+👉 When navigating to another page:
+
+- Header disappears ❌
+
+### 🎯 Goal
+
+- Keep Header constant
+- Change only body content
+
+### ✅ Solution: Nested (Children) Routes
+
+📌 Concept
+
+- Create a layout component
+- Use <Outlet /> to render child routes
+
+```javascript
+const AppLayout = () => {
+  return (
+    <div>
+      <Header />
+      <Outlet />
+    </div>
+  );
+};
+```
+
+📌 Router Configuration
+
+```javascript
+const appRouter = createBrowserRouter([
+  {
+    path: '/',
+    element: <AppLayout />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: '/',
+        element: <Body />,
+      },
+      {
+        path: '/about',
+        element: <About />,
+      },
+    ],
+  },
+]);
+```
+
+### 🔄 How it works
+
+```jsx
+Header (fixed)
+↓
+Outlet → renders child component
+```
+
+---
+
+- While making the tabs clickable and routing don't ever use Anchor Tag `<a>` as it reloads our entire webpage.
+- In React, we can navigate to a new page without reloading the whole page.
+- We use something known as Link provided by react-router-dom
+- The Link component works exactly like the anchor tag. But it avoids the reloading of the page.
+
+## 🔗 Navigation in React (Link vs Anchor Tag)
+
+### ❌ Why NOT use `<a>` tag in React?
+
+```html
+<a href="/about">About</a>
+```
+
+- Causes full page reload
+- Breaks Single Page Application (SPA) behavior
+- Slower user experience
+
+### ⚛️ React Way: Using Link
+
+👉 Provided by react-router-dom
+
+```javascript
+import { Link } from 'react-router-dom';
+
+<Link to="/about">About</Link>;
+```
+
+### ✅ Why use Link?
+
+- Prevents full page reload
+- Enables client-side routing
+- Faster navigation
+- Keeps app state intact
+
+### 🧠 How it works
+
+- Link updates the URL
+- React Router intercepts it
+- Only required component is rendered
+- No full refresh happens
